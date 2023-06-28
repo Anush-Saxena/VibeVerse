@@ -6,7 +6,7 @@ End points for the Sign In and Sign Up
 
 ### POST Requests
 
-/signUp  ->  For making the account of the user.
+#### /signUp  ->  For making the account of the user.
 
 data structure recieved will be of json format.
 format -
@@ -17,7 +17,7 @@ format -
 	"password": "Password"
 }
 
-/signIn  ->  For logging In
+#### /signIn  ->  For logging In
 
 format -
 
@@ -28,7 +28,7 @@ format -
 
 ### PUT Requests
 
-/update-info/{phoneNumber}        ->   For updating the Info of the user.
+#### /update-info/{phoneNumber}        ->   For updating the Info of the user.
 
 format -
 
@@ -39,7 +39,7 @@ format -
 	"oldpassword": "Old Password"
 }
 
-/change-password/{phoneNumber}    ->   For updating the Password.
+#### /change-password/{phoneNumber}    ->   For updating the Password.
 
 format -
 
@@ -50,7 +50,7 @@ format -
 
 ### DELETE Request
 
-/delete/{phoneNumber}             ->   For deleting the account.
+#### /delete/{phoneNumber}             ->   For deleting the account.
 
 format -
 
