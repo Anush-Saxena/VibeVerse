@@ -1,10 +1,10 @@
 # VibeVerse
-
-Some imp points till now:
-End points for the Sign In and Sign Up  ### REST API
+## REST API
 
 
-POST Requests
+End points for the Sign In and Sign Up  
+
+### POST Requests
 
 /signUp  ->  For making the account of the user.
 
@@ -26,7 +26,7 @@ format -
 	"password": "password"
 }
 
-PUT Requests
+### PUT Requests
 
 /update-info/{phoneNumber}        ->   For updating the Info of the user.
 
@@ -48,7 +48,7 @@ format -
 	"newPassword": "New Password"
 }
 
-DELETE Request
+### DELETE Request
 
 /delete/{phoneNumber}             ->   For deleting the account.
 
