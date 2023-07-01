@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.details.Passwords;
 import com.example.demo.details.UpdateDetails;
-import com.example.demo.entity.SignUpDetails;
 import com.example.demo.service.SettingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -5,6 +5,7 @@ import com.example.demo.entity.SignUpDetails;
 import com.example.demo.repo.LoginRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import static com.example.demo.methods.StringHashcode.convertToStringHash;
 
 @Service
 public class SettingsService {
@@ -14,9 +15,14 @@ public class SettingsService {
 
     public String updateInfo(int phoneNumber, UpdateDetails updateDetails){
         if (loginRepo.existsById(phoneNumber)){
-            if (loginRepo.getReferenceById(phoneNumber).getPassword().equals(updateDetails.getOldPassword())){
+            // since the reference will be containing the hashed form
+            if (phoneNumber != updateDetails.getPhoneNumber() && loginRepo.existsById(updateDetails.getPhoneNumber())){
+                return "Phone Number already in use";
+            }
+            else if (loginRepo.getReferenceById(phoneNumber).getPassword().equals(convertToStringHash(updateDetails.getOldPassword()))){
                 loginRepo.deleteById(phoneNumber);
-                loginRepo.save(new SignUpDetails(updateDetails.getPhoneNumber(),updateDetails.getUserName(),updateDetails.getPassword()));
+                // Here the hashed password is entered in the constructor
+                loginRepo.save(new SignUpDetails(updateDetails.getPhoneNumber(),updateDetails.getUserName(),convertToStringHash(updateDetails.getPassword())));
                 return "Data Updated";
             }
             else
@@ -27,8 +33,10 @@ public class SettingsService {
     public String changePassword(int phoneNumber, String oldPassword, String newPassword){
         if (loginRepo.existsById(phoneNumber)){
             SignUpDetails info = loginRepo.getReferenceById(phoneNumber);
-            if (info.getPassword().equals(oldPassword)) {
-                info.setPassword(newPassword);
+            String hashOldPassword = convertToStringHash(oldPassword);
+            String hashNewPassword = convertToStringHash(newPassword);
+            if (info.getPassword().equals(hashOldPassword)) {
+                info.setPassword(hashNewPassword);
                 loginRepo.deleteById(phoneNumber);
                 loginRepo.save(info);
                 return "Password Changed Successfully";
@@ -41,7 +49,8 @@ public class SettingsService {
     public String deleteUser(int phoneNumber, String password){
         if (loginRepo.existsById(phoneNumber)) {
             SignUpDetails info = loginRepo.getReferenceById(phoneNumber);
-            if (info.getPassword().equals(password)) {
+            String hashPassword = convertToStringHash(password);
+            if (info.getPassword().equals(hashPassword)) {
                 loginRepo.deleteById(phoneNumber);
                 return "User Data Deleted Successfully";
             } else {
