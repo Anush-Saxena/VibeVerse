@@ -4,6 +4,7 @@ import com.example.demo.entity.SignUpDetails;
 import com.example.demo.repo.LoginRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import static com.example.demo.methods.StringHashcode.convertToStringHash;
 
 @Service
 public class SignInService {
@@ -12,11 +13,13 @@ public class SignInService {
 
     public String verifyUser(int phoneNumber, String password){
         if (loginRepo.existsById(phoneNumber)){
+                // Here info will contain the password in hashed form.
             SignUpDetails info = loginRepo.getReferenceById(phoneNumber);
-            if (info.getPassword().equals(password))
+            String hashPassword = convertToStringHash(password);
+            if (info.getPassword().equals(hashPassword))
                 return "Login Successful";
             else
-                return "Wrong Password"+password;
+                return "Wrong Password";
         }
         else
             return "User Doesn't exists";
