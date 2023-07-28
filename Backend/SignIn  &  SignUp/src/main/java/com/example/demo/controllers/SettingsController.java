@@ -29,4 +29,9 @@ public class SettingsController {
         String requestIp = request.getRemoteAddr();
         return settingsService.deleteUser(password, requestIp);
     }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/signOut")
+    public String signOutUser(HttpServletRequest request){
+        String requestIp = request.getRemoteAddr();
+        return settingsService.signOutUser(requestIp);
+    }
 }

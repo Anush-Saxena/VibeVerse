@@ -42,8 +42,8 @@ public class SettingsService {
             }
 
             // For uniqueness of Username
-
-            if (!updateDetails.getUserName().equals(updateDetails.getUserName()) && loginRepo.existsByUserName(updateDetails.getUserName())) {
+            Optional<SignUpDetails> checkUserName = loginRepo.findByUserName(updateDetails.getUserName());
+            if (!updateDetails.getUserName().equals(updateDetails.getUserName()) && checkUserName.isPresent()) {
                 return "Not Updated! \nUser Name already in use";
             }
 
@@ -105,5 +105,14 @@ public class SettingsService {
             }
         }
         else return "You need to sign In First! ";
+    }
+
+    public String signOutUser(String requestIp){
+        Optional<SignedInDetails> signedIn = check.findById(requestIp);
+        if (signedIn.isPresent()){
+            check.deleteById(requestIp);
+            return "Signed Out";
+        }
+        else return "No account signedIn";
     }
 }
