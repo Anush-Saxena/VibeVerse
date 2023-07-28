@@ -1,4 +1,4 @@
-package com.example.demo.details;
+package com.example.demo.dto;
 
 public class Passwords  {
     private String oldPassword;

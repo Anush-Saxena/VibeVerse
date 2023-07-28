@@ -6,26 +6,30 @@ import jakarta.persistence.Id;
 @Entity
 public class SignUpDetails {
     @Id
-    private int phoneNumber=0;
-    private String userName="";
+    private String phoneNumber= "";  // Phone Number of the user
+    private String name="";     // Account Holder's Name
+    private String userName="";  // userName of the person's account
     private String password="";
+    private String dateOfBirth ="";
+
     public SignUpDetails() {
     }
 
-    public SignUpDetails(int phoneNumber, String userName, String password) {
-        super();
+    public SignUpDetails(String phoneNumber, String name, String userName, String password, String dateOfBirth) {
         this.phoneNumber = phoneNumber;
+        this.name = name;
         this.userName = userName;
         this.password = password;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public boolean isNotEmpty(){
-        return this.phoneNumber != 0 && !this.userName.equals("") && !this.password.equals("");
+        return this.phoneNumber.equals("") && !this.userName.equals("") && !this.password.equals("");
     }
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public String getUserName() {
@@ -39,5 +43,17 @@ public class SignUpDetails {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }
