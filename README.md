@@ -12,34 +12,39 @@ data structure recieved will be of json format.
 format -
 
 {
-	"phoneNumber": "User phoneNumber",
-	"userName": "Username",
-	"password": "Password"
+    "phoneNumber": "phoneNumber",
+    "userName": "user name",
+    "name": "Account holder's name",
+    "dateOfBirth": "19/12/1002",
+    "password": "Password"
 }
 
 #### /signIn  ->  For logging In
 
 format -
-
+#any one field can be given out of userName and phoneNumber
 {
 	"phoneNumber": "User phoneNumber",
+ 	"userName": "user name",
 	"password": "password"
 }
 
 ### PUT Requests
 
-#### /update-info/{phoneNumber}        ->   For updating the Info of the user.
+#### /update-info        ->   For updating the Info of the user.
 
 format -
 
 {
-	"phoneNumber": "User phoneNumber",
-	"userName": "Username",
-	"password": "Password",
-	"oldpassword": "Old Password"
+    "phoneNumber": "phoneNumber if you want to update",
+    "userName": "user name",
+    "name": "your name",
+    "dateOfBirth": "19/12/1002",
+    "password": "Password",
+    "oldPassword": "Password"
 }
 
-#### /change-password/{phoneNumber}    ->   For updating the Password.
+#### /change-password   ->   For updating the Password.
 
 format -
 
@@ -50,8 +55,12 @@ format -
 
 ### DELETE Request
 
-#### /delete/{phoneNumber}             ->   For deleting the account.
+#### /delete             ->   For deleting the account.
 
 format -
 
 "Directly Type your Password"
+
+#### /signOut            -> For Signing Out.
+
+*No Format Required.*
