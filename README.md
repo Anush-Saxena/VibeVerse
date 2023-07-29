@@ -61,10 +61,6 @@ format -
 
 "Directly Type your Password"
 
-<<<<<<< HEAD
-#### /signOut            ->   For Signing Out.
-=======
-#### /signOut            -> For Signing Out.
->>>>>>> Anush
+#### /signOut            ->    For Signing Out.
 
 *No Format Required.*
