@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 public class SignUpDetails {
     @Id
     private String phoneNumber= "";  // Phone Number of the user
-    private String name="";     // Account Holder's Name
-    private String userName="";  // userName of the person's account
+    private String name="";          // Account Holder's Name
+    private String userName="";      // userName of the person's account
     private String password="";
     private String dateOfBirth ="";
 
